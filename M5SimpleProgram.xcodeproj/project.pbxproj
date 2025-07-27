@@ -22,9 +22,25 @@
 		D27912F12E3698B7009E238F /* M5SimpleProgram */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = M5SimpleProgram; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D27913162E369D14009E238F /* Exceptions for "M5SimpleProgram" folder in "M5SimpleProgram" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				M5SimpleProgram.ino,
+			);
+			target = D27912F02E3698B7009E238F /* M5SimpleProgram */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D27912F32E3698B7009E238F /* M5SimpleProgram */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D27913162E369D14009E238F /* Exceptions for "M5SimpleProgram" folder in "M5SimpleProgram" target */,
+			);
+			explicitFileTypes = {
+				M5SimpleProgram.ino = sourcecode.cpp.cpp;
+			};
 			path = M5SimpleProgram;
 			sourceTree = "<group>";
 		};
