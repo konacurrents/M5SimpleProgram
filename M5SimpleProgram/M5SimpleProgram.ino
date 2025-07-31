@@ -8,13 +8,14 @@
 // Buzzer pins (using motor driver)
 #define BUZZER_IN1 19
 #define BUZZER_IN2 22
+#define BUZZER
 
 #ifdef MOVED_TO_BLESERVER
 NimBLECharacteristic* pCharacteristic;
 #endif
 bool motorDirection = false;
 unsigned long motorRunTime = 2000; // in milliseconds
-bool buzzerEnabled = false;
+bool _buzzerON = false;
 
 // Clean input
 std::string cleanInput(const std::string& input) {
@@ -53,7 +54,7 @@ void buzz() {
 
 void feed()
 {
-   if (buzzerEnabled) {
+   if (_buzzerON) {
         Serial.println("Buzzing before feed...");
         buzz();
       }
@@ -89,7 +90,7 @@ class CharacteristicCallbacks : public NimBLECharacteristicCallbacks {
     Serial.println(value.c_str());
 
     if (value == "ON") {
-      buzzerEnabled = true;
+      _buzzerON = true;
       Serial.println("Buzzer enabled.");
       pCharacteristic->setValue("buzzer on");
       pCharacteristic->notify();
@@ -97,7 +98,7 @@ class CharacteristicCallbacks : public NimBLECharacteristicCallbacks {
     }
 
     if (value == "OFF") {
-      buzzerEnabled = false;
+      _buzzerON = false;
       Serial.println("Buzzer disabled.");
       pCharacteristic->setValue("buzzer off");
       pCharacteristic->notify();
@@ -220,9 +221,26 @@ void loop() {
         if (value == "f" || value == "s" || value == "c" ) {
             feed();
         }
+        else if (value == "B")
+        {
+            _buzzerON = true;
+        }
+         else if (value == "b")
+        {
+            _buzzerON = false;
+        }
         else if (value == "r")
         {
             ESP.restart();
+        }
+
+        else if (value == ".")
+        {
+            Serial.println("Commands: f,s,c == feed, B/b == buzzer on/off, r ==reboot, . = this message");
+            Serial.printf("Buzzer = %s\n", _buzzerON?"ON":"OFF");
+            Serial.printf("Buzzer pins = %d, %d\n", BUZZER_IN1, BUZZER_IN2);
+
+            Serial.println("Version 7.31.25");
         }
         
     }
