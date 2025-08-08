@@ -47,7 +47,7 @@ void stopMotor() {
 void buzz() {
   digitalWrite(BUZZER_IN1, HIGH);
   digitalWrite(BUZZER_IN2, LOW);
-  delay(500);
+  delay(100);
   digitalWrite(BUZZER_IN1, LOW);
   digitalWrite(BUZZER_IN2, LOW);
 }

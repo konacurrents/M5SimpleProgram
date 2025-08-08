@@ -39,6 +39,8 @@
 //! start with this one..
 #define USE_BLE_SERVER_NETWORKING
 
+//! start with this one..
+#define USE_BLE_CLIENT_NETWORKING
 
 #ifdef USE_MQTT_NETWORKING
 #include "src/MQTTModule/MQTTNetworking.h"
